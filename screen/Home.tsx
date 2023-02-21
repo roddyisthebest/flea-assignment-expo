@@ -3,16 +3,16 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
-  Text,
   useColorScheme,
   View,
   FlatList,
 } from 'react-native';
 import EventSource from 'react-native-sse';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import Card from '.././components/Card';
+import HorizontalScroll from '../components/HorizontalScroll';
+import Label from '../components/Label';
 
-const App = () => {
+const Home = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -74,25 +74,6 @@ const App = () => {
     type: 'sse.auction_viewed',
     url: '',
   });
-  const renderItem = ({
-    item,
-  }: {
-    item: { viewCount: number; auctionId: number };
-  }) => <Card viewCount={item.viewCount} auctionId={item.auctionId} />;
-
-  const suffle = (
-    dataProps: { viewCount: number; auctionId: number }[],
-    rand: number
-  ) => {
-    const copyData = [...dataProps];
-    for (let index = dataProps.length - 1; index > 0; index--) {
-      const randomPosition = Math.floor(rand * (index + 1));
-      const temporary = copyData[index];
-      copyData[index] = copyData[randomPosition];
-      copyData[randomPosition] = temporary;
-    }
-    return copyData.sort(() => rand - 0.5);
-  };
 
   type MyCustomEvents = 'sse.auction_viewed' | 'open';
 
@@ -135,42 +116,24 @@ const App = () => {
     );
   }, [sseEvent]);
 
+  const onRefresh = () => {
+    setRandom([Math.random(), Math.random()]);
+  };
+
   return (
     <SafeAreaView style={backgroundStyle}>
       <FlatList
         ListHeaderComponent={
           <View style={styles.body}>
-            <View style={styles.bodyLabel}>
-              <Text style={styles.text}>가로 스크롤 영역 #1</Text>
-            </View>
-            <FlatList
-              data={suffle(data, random[0])}
-              horizontal
-              renderItem={renderItem}
-              ItemSeparatorComponent={() => <View style={styles.separator} />}
-              style={styles.flatListStyle}
-              contentContainerStyle={styles.flatListContainerStyle}
-              keyExtractor={(item) => item.auctionId.toString()}
-            />
-            <View style={styles.bodyLabel}>
-              <Text style={styles.text}>가로 스크롤 영역 #2</Text>
-            </View>
-            <FlatList
-              data={suffle(data, random[1])}
-              horizontal
-              renderItem={renderItem}
-              ItemSeparatorComponent={() => <View style={styles.separator} />}
-              style={styles.flatListStyle}
-              contentContainerStyle={styles.flatListContainerStyle}
-              keyExtractor={(item) => item.auctionId.toString()}
-            />
+            <Label text="가로 스크롤 영역 #1"></Label>
+            <HorizontalScroll data={data} random={random[0]}></HorizontalScroll>
+            <Label text="가로 스크롤 영역 #2"></Label>
+            <HorizontalScroll data={data} random={random[1]}></HorizontalScroll>
           </View>
         }
         refreshing={refreshing}
-        onRefresh={() => {
-          setRandom([Math.random(), Math.random()]);
-        }}
-        style={styles.flatListWrapperStyle}
+        onRefresh={onRefresh}
+        style={styles.flatListWrapper}
         data={[]}
         renderItem={() => null}
       />
@@ -188,53 +151,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
-  section: {
-    flex: 1,
-    borderColor: 'black',
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'white',
-  },
-  text: {
-    fontSize: 20,
-    fontWeight: '500',
-    color: '#4f4f4f',
-  },
   body: {
     flex: 10,
   },
-  bodyLabel: {
-    height: 60,
-    width: '100%',
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    justifyContent: 'center',
-  },
-  item: {
-    width: 160,
-    height: 160,
-    backgroundColor: '#3A2F2A',
-    borderRadius: 20,
-  },
-  separator: {
-    width: 15,
-  },
-  flatListStyle: {
-    flexGrow: 0,
-    height: 190,
-    backgroundColor: '#eaeaea',
-    borderColor: 'black',
-    borderBottomWidth: 1,
-    borderTopWidth: 1,
-  },
-  flatListContainerStyle: {
-    padding: 15,
-  },
-  flatListWrapperStyle: {
+  flatListWrapper: {
     backgroundColor: 'white',
   },
 });
 
-export default App;
+export default Home;
