@@ -130,7 +130,7 @@ const Home = () => {
             <Label text="가로 스크롤 영역 #1"></Label>
             <HorizontalScroll data={data} random={random[0]}></HorizontalScroll>
             <Label text="가로 스크롤 영역 #2"></Label>
-            {/* <HorizontalScroll data={data} random={random[1]}></HorizontalScroll> */}
+            <HorizontalScroll data={data} random={random[1]}></HorizontalScroll>
           </View>
         }
         refreshing={refreshing}
