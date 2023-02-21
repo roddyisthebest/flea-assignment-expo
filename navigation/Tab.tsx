@@ -30,13 +30,6 @@ const Tab = () => {
         headerRightContainerStyle: {
           paddingRight: 30,
         },
-        header: () => null,
-        //   headerTitle: () => (
-
-        //   ),
-        //   headerLeft: () => (
-
-        //   ),
       }}
     >
       <NativeTab.Screen
@@ -44,10 +37,7 @@ const Tab = () => {
         component={Home}
         options={{
           tabBarIcon: ({ focused }) => (
-            <Icon
-              name={focused ? 'chatbubbles' : 'chatbubbles-outline'}
-              size={20}
-            />
+            <Icon name={focused ? 'home' : 'home-outline'} size={20} />
           ),
         }}
       />

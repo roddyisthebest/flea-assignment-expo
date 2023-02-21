@@ -137,11 +137,6 @@ const App = () => {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <View style={styles.container}>
-        <View style={styles.section}>
-          <Text style={styles.text}>헤더영역</Text>
-        </View>
-      </View>
       <FlatList
         ListHeaderComponent={
           <View style={styles.body}>
@@ -179,9 +174,7 @@ const App = () => {
         data={[]}
         renderItem={() => null}
       />
-      <View style={styles.section}>
-        <Text style={styles.text}>탭바영역</Text>
-      </View>
+
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
