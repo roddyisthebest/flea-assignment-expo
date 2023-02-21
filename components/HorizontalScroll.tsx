@@ -2,6 +2,7 @@ import { StyleSheet, FlatList, View } from 'react-native';
 import Card from './Card';
 import DataType from '../types/Data';
 import { suffle } from '../util/Suffle';
+import { memo } from 'react';
 const HorizontalScroll = ({
   data,
   random,
@@ -26,7 +27,7 @@ const HorizontalScroll = ({
   );
 };
 
-export default HorizontalScroll;
+export default memo(HorizontalScroll);
 
 const styles = StyleSheet.create({
   style: {
