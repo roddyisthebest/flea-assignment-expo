@@ -24,44 +24,46 @@ const Home = () => {
     Math.random(),
     Math.random(),
   ]);
-  const [data, setData] = useState<{ viewCount: number; auctionId: number }[]>([
-    { auctionId: 2127, viewCount: 120 },
-    { auctionId: 2128, viewCount: 143 },
-    { auctionId: 2130, viewCount: 76 },
-    { auctionId: 2131, viewCount: 89 },
-    { auctionId: 2126, viewCount: 62 },
-    { auctionId: 2135, viewCount: 58 },
-    { auctionId: 2129, viewCount: 69 },
-    { auctionId: 2132, viewCount: 65 },
-    { auctionId: 2134, viewCount: 56 },
-    { auctionId: 2136, viewCount: 43 },
-    { auctionId: 2140, viewCount: 54 },
-    { auctionId: 2137, viewCount: 83 },
-    { auctionId: 2138, viewCount: 49 },
-    { auctionId: 2139, viewCount: 37 },
-    { auctionId: 2141, viewCount: 80 },
-    { auctionId: 2142, viewCount: 55 },
-    { auctionId: 2123, viewCount: 113 },
-    { auctionId: 2124, viewCount: 51 },
-    { auctionId: 2125, viewCount: 67 },
-    { auctionId: 2133, viewCount: 84 },
-    { auctionId: 2145, viewCount: 45 },
-    { auctionId: 2146, viewCount: 44 },
-    { auctionId: 2150, viewCount: 58 },
-    { auctionId: 2151, viewCount: 69 },
-    { auctionId: 2147, viewCount: 33 },
-    { auctionId: 2148, viewCount: 19 },
-    { auctionId: 2153, viewCount: 45 },
-    { auctionId: 2158, viewCount: 47 },
-    { auctionId: 2154, viewCount: 27 },
-    { auctionId: 2155, viewCount: 19 },
-    { auctionId: 2156, viewCount: 23 },
-    { auctionId: 2157, viewCount: 31 },
-    { auctionId: 2143, viewCount: 51 },
-    { auctionId: 2144, viewCount: 44 },
-    { auctionId: 2149, viewCount: 44 },
-    { auctionId: 2152, viewCount: 80 },
-  ]);
+  const [data, setData] = useState<{ viewCount: number; auctionId: number }[]>(
+    [
+      { auctionId: 2206, viewCount: 120 },
+      { auctionId: 2207, viewCount: 143 },
+      { auctionId: 2208, viewCount: 76 },
+      { auctionId: 2209, viewCount: 89 },
+      { auctionId: 2210, viewCount: 62 },
+      { auctionId: 2211, viewCount: 58 },
+      { auctionId: 2212, viewCount: 69 },
+      { auctionId: 2213, viewCount: 65 },
+      { auctionId: 2214, viewCount: 56 },
+      { auctionId: 2215, viewCount: 43 },
+      { auctionId: 2216, viewCount: 54 },
+      { auctionId: 2217, viewCount: 83 },
+      { auctionId: 2218, viewCount: 49 },
+      { auctionId: 2219, viewCount: 37 },
+      { auctionId: 2220, viewCount: 80 },
+      { auctionId: 2221, viewCount: 55 },
+      { auctionId: 2180, viewCount: 113 },
+      { auctionId: 2181, viewCount: 51 },
+      { auctionId: 2282, viewCount: 67 },
+      { auctionId: 2283, viewCount: 84 },
+      { auctionId: 2284, viewCount: 45 },
+      { auctionId: 2285, viewCount: 44 },
+      { auctionId: 2286, viewCount: 58 },
+      { auctionId: 2287, viewCount: 69 },
+      { auctionId: 2288, viewCount: 33 },
+      { auctionId: 2289, viewCount: 19 },
+      { auctionId: 2290, viewCount: 45 },
+      { auctionId: 2291, viewCount: 47 },
+      { auctionId: 2292, viewCount: 27 },
+      { auctionId: 2293, viewCount: 19 },
+      { auctionId: 2294, viewCount: 23 },
+      { auctionId: 2295, viewCount: 31 },
+      { auctionId: 2296, viewCount: 51 },
+      { auctionId: 2297, viewCount: 44 },
+      { auctionId: 2298, viewCount: 44 },
+      { auctionId: 2299, viewCount: 80 },
+    ].sort(() => Math.random() - 0.5)
+  );
 
   const [sseEvent, setSseEvent] = useState<{
     data: string;
@@ -128,7 +130,7 @@ const Home = () => {
             <Label text="가로 스크롤 영역 #1"></Label>
             <HorizontalScroll data={data} random={random[0]}></HorizontalScroll>
             <Label text="가로 스크롤 영역 #2"></Label>
-            <HorizontalScroll data={data} random={random[1]}></HorizontalScroll>
+            {/* <HorizontalScroll data={data} random={random[1]}></HorizontalScroll> */}
           </View>
         }
         refreshing={refreshing}
