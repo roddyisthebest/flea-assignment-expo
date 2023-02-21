@@ -1,7 +1,7 @@
 import { StyleSheet, FlatList, View } from 'react-native';
 import Card from './Card';
 import DataType from '../types/Data';
-import { suffle } from '../util/Suffle';
+import { shuffle } from '../util/shuffle';
 import { memo } from 'react';
 const HorizontalScroll = ({
   data,
@@ -16,7 +16,7 @@ const HorizontalScroll = ({
 
   return (
     <FlatList
-      data={suffle(data, random)}
+      data={shuffle(data, random)}
       horizontal
       renderItem={renderItem}
       ItemSeparatorComponent={() => <View style={styles.separator} />}

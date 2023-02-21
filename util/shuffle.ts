@@ -3,7 +3,7 @@ const randomNum = (min: number, max: number, rand: number) => {
   return randNum;
 };
 
-export const suffle = (
+export const shuffle = (
   dataProps: { viewCount: number; auctionId: number }[],
   rand: number
 ) => {
